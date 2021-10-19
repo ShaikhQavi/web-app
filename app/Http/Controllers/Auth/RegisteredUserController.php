@@ -48,7 +48,10 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-
+        if(Auth::User()->type == 'user')
+        {
+            return redirect()->route('users');
+        }
         return redirect(RouteServiceProvider::HOME);
     }
 }

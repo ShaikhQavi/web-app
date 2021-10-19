@@ -22,3 +22,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+Route::Resource('/user', 'App\Http\Controllers\UserController')->middleware('user');
+Route::Resource('/admin', 'App\Http\Controllers\AdminController')->middleware('admin');
+Route::Resource('/categories', 'App\Http\Controllers\CategoriesController')->middleware('admin');
