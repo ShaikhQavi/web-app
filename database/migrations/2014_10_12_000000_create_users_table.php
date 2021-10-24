@@ -22,7 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('bio')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->enum('type',['user','admin'])->default('user');
-            $table->integer('active_since')->nullable();
+            $table->enum('gender',['male','female','other']);
+            $table->string('active_since')->nullable();
             $table->boolean('status')->nullable();
             $table->rememberToken();
             $table->timestamps();
