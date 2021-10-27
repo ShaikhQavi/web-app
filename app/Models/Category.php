@@ -14,5 +14,6 @@ class Category extends Model
     {
         return $this->hasMany(Topic::class, 'category_id');
     }
+    
     use HasFactory;
 }
