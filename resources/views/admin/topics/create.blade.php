@@ -31,5 +31,8 @@
                 </div>
             </form>    
         </div>
+        <div class="col-12">
+            @include('admin.topics.index')
+        </div>
     </div>
 </div>
