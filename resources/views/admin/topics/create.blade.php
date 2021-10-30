@@ -20,6 +20,7 @@
                             </select>
                             <small id="helpId"  class="form-text text-muted">Select Category</small>
                         </div>
+                        </div>
                         <div class="form-group col-md-6 mt-4">
                             <label for="content">Content</label>
                             <textarea class="form-control" name="content" id="" cols="30" rows="10"></textarea>

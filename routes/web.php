@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.register');
 });
 
 Route::get('/dashboard', function () {
@@ -25,5 +25,10 @@ Route::Resource('/user', 'App\Http\Controllers\UserController')->middleware('use
 Route::Resource('/admin', 'App\Http\Controllers\AdminController')->middleware('admin');
 Route::Resource('/categories', 'App\Http\Controllers\CategoriesController')->middleware('admin');
 Route::Resource('/topics', 'App\Http\Controllers\TopicController');
+Route::Resource('/user-topics', 'App\Http\Controllers\UserTopicController')->middleware('user');
+Route::get('/topic-posts/{id}', 'App\Http\Controllers\UserController@getTopicPosts');
+Route::Resource('/post', 'App\Http\Controllers\PostController')->middleware('user');
+
+
 
 

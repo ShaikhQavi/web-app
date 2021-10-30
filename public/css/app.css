@@ -16,7 +16,14 @@ Use a better box model (opinionated).
 ::after {
   box-sizing: border-box;
 }
-
+.bg{
+  background-image: url('../bg/bg-1.jpg') !important;
+  background-color: #cccccc; /* Used if the image is unavailable */
+  max-height: 100%; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; 
+}
 /**
 Use a more readable tab size (opinionated).
 */
@@ -15561,7 +15568,8 @@ select {
 
 .bg-gray-100 {
   --tw-bg-opacity: 1;
-  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+/* background-color: rgba(243, 244, 246, var(--tw-bg-opacity)); */
+
 }
 
 .bg-gray-200 {
