@@ -13,13 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.register');
-});
+Route::get('/', 'App\Http\Controllers\UserController@index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard','App\Http\Controllers\UserController@index'
+)->middleware(['auth'])->name('dashboard');
 require __DIR__.'/auth.php';
 Route::Resource('/user', 'App\Http\Controllers\UserController')->middleware('user');
 Route::Resource('/admin', 'App\Http\Controllers\AdminController')->middleware('admin');
@@ -28,6 +25,7 @@ Route::Resource('/topics', 'App\Http\Controllers\TopicController');
 Route::Resource('/user-topics', 'App\Http\Controllers\UserTopicController')->middleware('user');
 Route::get('/topic-posts/{id}', 'App\Http\Controllers\UserController@getTopicPosts');
 Route::Resource('/post', 'App\Http\Controllers\PostController')->middleware('user');
+route::get('/post-topics-api/{id}', 'App\Http\Controllers\UserController@getTopicPostsApi');
 
 
 

@@ -9,11 +9,11 @@ class Post extends Model
 {
     protected $fillable = ['content', 'user_id', 'topic_id'];
     
-    public function User()
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function Topic()
+    public function topic()
     {
         return $this->belongsTo(Topic::class, 'topic_id');
     }

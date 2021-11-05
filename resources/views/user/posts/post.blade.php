@@ -24,10 +24,59 @@
                               </div>
                               
                         </form>
-                        
+                    </div>
+                    <div id="updatePosts">
+                    @foreach($posts as $post)
+                        <div class="card text-center m-4">
+                            <div class="card-header">
+                                {{$post->user->name}}
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{$post->topic->title}}</h5>
+                                <p class="card-text">{{$post->content}}</p>
+                            </div>
+                            <div class="card-footer text-muted">
+                                2 days ago
+                            </div>
+                        </div>
+                    @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        let topic_id = {{$post->topic->id}};
+        setInterval(() => {
+            $.ajax({
+                    type:"GET",
+                    dataType: "json",
+                    url:"/post-topics-api/"+topic_id,
+                    success:function(data)
+                    {
+                        $updatePosts = $('#updatePosts');
+                        $updatePosts.empty();
+                        let posts = '';
+                        data.forEach(function(post) {
+                                posts+='<div class="card text-center m-4">'+
+                                '<div class="card-header">'+
+                                post['user']['name']+
+                                '</div>'+
+                                '<div class="card-body">'+
+                                '<h5 class="card-title">'+
+                                post['topic']['title']+
+                                '</h5>'+
+                                '<p class="card-text">'+
+                                post['content']+
+                                '</p>'+
+                                '</div>'+
+                                '<div class="card-footer text-muted">'+
+                                '</div>'+
+                                '</div>'
+                                });
+                            $updatePosts = $('#updatePosts').html(posts);
+                    }
+        });
+        }, 1000);
+    </script>
 </x-app-layout>

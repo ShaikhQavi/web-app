@@ -17,5 +17,10 @@ class Topic extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     use HasFactory;
 }
